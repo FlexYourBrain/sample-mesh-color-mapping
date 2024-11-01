@@ -2,7 +2,7 @@
 
 This sample project demonstrates a module for mapping/indexing vertex colors from a mesh buffer for real-time manipulation in defold. Playing the project allows the user to change the colors of the mesh objects using the displayed gui options. Similar to something you may find in a game with gear customization mechanics. However this method can be used for many different visual effects and mechanics.
 
-[: Play The DEMO :]()
+[: Play The DEMO :](https://flexyourbrain.itch.io/mesh-color-mapping)
 
 The main focus of this sample is the module `color_mapping.lua` contains functions that are used to map and re-color the mesh.
 
