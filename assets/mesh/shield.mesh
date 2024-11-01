@@ -1,0 +1,2 @@
+material: "/assets/materials/vertex_color.material"
+vertices: "/assets/mesh/Shield.buffer"

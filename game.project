@@ -1,0 +1,33 @@
+[bootstrap]
+main_collection = /main/main.collectionc
+render = /main/main.renderc
+
+[script]
+shared_state = 1
+
+[display]
+width = 1880
+height = 980
+
+[android]
+input_method = HiddenInputField
+package = com.defold.example.basic3d
+
+[project]
+dependencies = 
+title = sample-mesh-color-mapping
+
+[physics]
+type = 3D
+
+[osx]
+bundle_identifier = com.defold.example.basic3d
+
+[ios]
+bundle_identifier = com.defold.example.basic3d
+
+[html5]
+cssfile = /builtins/manifests/web/dark_theme.css
+show_fullscreen_button = 0
+show_made_with_defold = 0
+

@@ -1,0 +1,69 @@
+name: "main"
+scale_along_z: 0
+embedded_instances {
+  id: "logic"
+  data: "components {\n"
+  "  id: \"logic\"\n"
+  "  component: \"/assets/scripts/mesh_manager.script\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"UI\"\n"
+  "  component: \"/assets/gui/UI.gui\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "camera"
+  children: "background"
+  data: "embedded_components {\n"
+  "  id: \"camera\"\n"
+  "  type: \"camera\"\n"
+  "  data: \"aspect_ratio: 1.0\\n"
+  "fov: 0.7854\\n"
+  "near_z: 0.1\\n"
+  "far_z: 1000.0\\n"
+  "auto_aspect_ratio: 1\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    z: 9.5
+  }
+}
+embedded_instances {
+  id: "sword"
+  data: "components {\n"
+  "  id: \"sword\"\n"
+  "  component: \"/assets/mesh/sword.mesh\"\n"
+  "}\n"
+  ""
+  position {
+    y: -2.0
+  }
+}
+embedded_instances {
+  id: "shield"
+  data: "components {\n"
+  "  id: \"shield\"\n"
+  "  component: \"/assets/mesh/shield.mesh\"\n"
+  "}\n"
+  ""
+  position {
+    x: 4.2
+  }
+}
+embedded_instances {
+  id: "background"
+  data: "components {\n"
+  "  id: \"bg\"\n"
+  "  component: \"/assets/mesh/bg.model\"\n"
+  "}\n"
+  ""
+  position {
+    z: -12.0
+  }
+  scale3 {
+    x: 5.0
+    y: 5.0
+  }
+}

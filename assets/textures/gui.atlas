@@ -1,0 +1,71 @@
+images {
+  image: "/assets/textures/boundry.png"
+}
+images {
+  image: "/assets/textures/button_default.png"
+}
+images {
+  image: "/assets/textures/button_selected.png"
+}
+images {
+  image: "/assets/textures/mcm_title.png"
+}
+images {
+  image: "/assets/textures/rotate_default.png"
+}
+images {
+  image: "/assets/textures/rotate_selected.png"
+}
+images {
+  image: "/assets/textures/text_blade.png"
+}
+images {
+  image: "/assets/textures/text_grip1.png"
+}
+images {
+  image: "/assets/textures/text_grip2.png"
+}
+images {
+  image: "/assets/textures/text_guard.png"
+}
+images {
+  image: "/assets/textures/text_metal1.png"
+}
+images {
+  image: "/assets/textures/text_metal2.png"
+}
+images {
+  image: "/assets/textures/text_padding.png"
+}
+images {
+  image: "/assets/textures/text_shield.png"
+}
+images {
+  image: "/assets/textures/text_special.png"
+}
+images {
+  image: "/assets/textures/text_spin.png"
+}
+images {
+  image: "/assets/textures/text_sword.png"
+}
+images {
+  image: "/assets/textures/text_wood.png"
+}
+images {
+  image: "/assets/textures/wood1.png"
+}
+images {
+  image: "/assets/textures/wood2.png"
+}
+images {
+  image: "/assets/textures/wood3.png"
+}
+images {
+  image: "/assets/textures/wood4.png"
+}
+images {
+  image: "/assets/textures/special.png"
+}
+margin: 2
+extrude_borders: 2

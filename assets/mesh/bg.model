@@ -1,0 +1,10 @@
+mesh: "/assets/mesh/bg_grid.glb"
+name: "bg"
+materials {
+  name: "default"
+  material: "/assets/materials/bg.material"
+  textures {
+    sampler: "texture_sampler"
+    texture: "/assets/textures/bg.png"
+  }
+}

@@ -1,0 +1,72 @@
+go.property("blade", vmath.vector4(0.533, 0.094, 0.047, 1.0))
+local m = require "assets.scripts.color_mapping"
+local sword_mesh = "/sword#sword"
+local shield_mesh = "/shield#shield"
+
+
+function init(self)
+
+	msg.post(".", "acquire_input_focus")
+	msg.post("@render:", "use_camera_projection")
+	msg.post("camera", "acquire_camera_focus")
+	msg.post("@render:", "clear_color", { color = vmath.vector4(0.23, 0.24, 0.29, 0) } )
+
+	self.is_special = false
+	
+	m.map_vertex_colors(sword_mesh)
+	m.map_vertex_colors(shield_mesh)
+	m.mesh_info(sword_mesh)
+	m.mesh_info(shield_mesh)
+	
+	go.animate("#", "blade", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(0.322, 0, 0.678, 1.0), go.EASING_INOUTSINE, 1)
+
+end
+
+
+function update(self)
+
+	if self.is_special then
+		m.color_on_mesh(sword_mesh, 4, self.blade)
+		m.color_on_mesh(sword_mesh, 5, vmath.vector4(self.blade.x-.2, self.blade.y-.2, self.blade.z-.2, 1))
+	end
+
+end
+
+
+local function spin_mesh(mesh_id, on_off)
+
+	if on_off then
+		go.animate(mesh_id, "euler.y", go.PLAYBACK_LOOP_FORWARD, 360, go.EASING_LINEAR, 10.0)
+	else
+		go.animate(mesh_id, "euler.y", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_OUTSINE, 0.01)
+	end
+
+end
+
+
+function on_message(self, message_id, message)
+
+	if message_id == hash("color_mesh") then
+
+		if message.map2 == nil then
+			m.color_on_mesh(message.mesh, message.map1, message.color1)
+		else
+			if message.mesh == sword_mesh and message.map1 == 4 then
+				self.is_special = false
+			end
+			m.color_on_mesh(message.mesh, message.map1, message.color1)
+			m.color_on_mesh(message.mesh, message.map2, message.color2)
+		end
+		
+	elseif message_id == hash("spin_mesh") then --special
+
+		spin_mesh(message.mesh, message.io)
+
+	elseif message_id == hash("special") then
+
+		self.is_special = not self.is_special
+
+	end
+
+end
+

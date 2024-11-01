@@ -1,0 +1,1180 @@
+script: "/assets/scripts/UI.gui_script"
+textures {
+  name: "gui"
+  texture: "/assets/textures/gui.atlas"
+}
+nodes {
+  position {
+    x: 189.0
+    y: 912.0
+  }
+  type: TYPE_BOX
+  texture: "gui/mcm_title"
+  id: "title"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 83.0
+    y: 829.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_sword"
+  id: "t_sword"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -48.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_blade"
+  id: "t_blade"
+  parent: "t_sword"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 100.0
+    y: -11.0
+  }
+  type: TYPE_TEMPLATE
+  id: "blade_b1"
+  parent: "t_blade"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.549
+    y: 0.573
+    z: 0.612
+  }
+  type: TYPE_BOX
+  id: "blade_b1/color"
+  parent: "blade_b1"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/button_selected"
+  id: "blade_b1/box"
+  parent: "blade_b1"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 196.0
+    y: -11.0
+  }
+  type: TYPE_TEMPLATE
+  id: "blade_b2"
+  parent: "t_blade"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.902
+    y: 0.702
+    z: 0.302
+  }
+  type: TYPE_BOX
+  id: "blade_b2/color"
+  parent: "blade_b2"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "blade_b2/box"
+  parent: "blade_b2"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 287.0
+    y: -11.0
+  }
+  type: TYPE_TEMPLATE
+  id: "blade_b3"
+  parent: "t_blade"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.302
+    y: 0.4
+    z: 0.8
+  }
+  type: TYPE_BOX
+  id: "blade_b3/color"
+  parent: "blade_b3"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "blade_b3/box"
+  parent: "blade_b3"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 378.0
+    y: -11.0
+  }
+  type: TYPE_TEMPLATE
+  id: "blade_b4"
+  parent: "t_blade"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.302
+    y: 0.502
+    z: 0.302
+  }
+  type: TYPE_BOX
+  id: "blade_b4/color"
+  parent: "blade_b4"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "blade_b4/box"
+  parent: "blade_b4"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 510.0
+    y: -8.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_special"
+  id: "t_special"
+  parent: "t_sword"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -51.0
+  }
+  type: TYPE_TEMPLATE
+  id: "blade_b5"
+  parent: "t_special"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/special"
+  id: "blade_b5/color"
+  parent: "blade_b5"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "blade_b5/box"
+  parent: "blade_b5"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 1.0
+    y: -138.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_guard"
+  id: "t_guard"
+  parent: "t_sword"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 99.0
+    y: -10.0
+  }
+  type: TYPE_TEMPLATE
+  id: "guard_b1"
+  parent: "t_guard"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    y: 0.776
+    z: 0.318
+  }
+  type: TYPE_BOX
+  id: "guard_b1/color"
+  parent: "guard_b1"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/button_selected"
+  id: "guard_b1/box"
+  parent: "guard_b1"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 195.0
+    y: -10.0
+  }
+  type: TYPE_TEMPLATE
+  id: "guard_b2"
+  parent: "t_guard"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.902
+    y: 0.302
+    z: 0.302
+  }
+  type: TYPE_BOX
+  id: "guard_b2/color"
+  parent: "guard_b2"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "guard_b2/box"
+  parent: "guard_b2"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 286.0
+    y: -10.0
+  }
+  type: TYPE_TEMPLATE
+  id: "guard_b3"
+  parent: "t_guard"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+  }
+  type: TYPE_BOX
+  id: "guard_b3/color"
+  parent: "guard_b3"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "guard_b3/box"
+  parent: "guard_b3"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 377.0
+    y: -10.0
+  }
+  type: TYPE_TEMPLATE
+  id: "guard_b4"
+  parent: "t_guard"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.502
+    y: 0.6
+  }
+  type: TYPE_BOX
+  id: "guard_b4/color"
+  parent: "guard_b4"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "guard_b4/box"
+  parent: "guard_b4"
+  template_node_child: true
+}
+nodes {
+  position {
+    y: -233.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_grip1"
+  id: "t_grip"
+  parent: "t_sword"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 100.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "grip1_b1"
+  parent: "t_grip"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.6
+    y: 0.357
+    z: 0.373
+  }
+  type: TYPE_BOX
+  id: "grip1_b1/color"
+  parent: "grip1_b1"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/button_selected"
+  id: "grip1_b1/box"
+  parent: "grip1_b1"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 196.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "grip1_b2"
+  parent: "t_grip"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.302
+    y: 0.102
+    z: 0.302
+  }
+  type: TYPE_BOX
+  id: "grip1_b2/color"
+  parent: "grip1_b2"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "grip1_b2/box"
+  parent: "grip1_b2"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 287.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "grip1_b3"
+  parent: "t_grip"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.302
+    y: 0.2
+    z: 0.6
+  }
+  type: TYPE_BOX
+  id: "grip1_b3/color"
+  parent: "grip1_b3"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "grip1_b3/box"
+  parent: "grip1_b3"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 378.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "grip1_b4"
+  parent: "t_grip"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.328
+    y: 0.213
+    z: 0.077
+  }
+  type: TYPE_BOX
+  id: "grip1_b4/color"
+  parent: "grip1_b4"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "grip1_b4/box"
+  parent: "grip1_b4"
+  template_node_child: true
+}
+nodes {
+  position {
+    y: -327.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_grip2"
+  id: "t_grip2"
+  parent: "t_sword"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 100.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "grip2_b1"
+  parent: "t_grip2"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.471
+    y: 0.486
+    z: 0.51
+  }
+  type: TYPE_BOX
+  id: "grip2_b1/color"
+  parent: "grip2_b1"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/button_selected"
+  id: "grip2_b1/box"
+  parent: "grip2_b1"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 196.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "grip2_b2"
+  parent: "t_grip2"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.502
+    y: 0.4
+    z: 0.8
+  }
+  type: TYPE_BOX
+  id: "grip2_b2/color"
+  parent: "grip2_b2"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "grip2_b2/box"
+  parent: "grip2_b2"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 287.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "grip2_b3"
+  parent: "t_grip2"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    y: 0.702
+    z: 0.4
+  }
+  type: TYPE_BOX
+  id: "grip2_b3/color"
+  parent: "grip2_b3"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "grip2_b3/box"
+  parent: "grip2_b3"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 378.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "grip2_b4"
+  parent: "t_grip2"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.6
+    y: 0.702
+  }
+  type: TYPE_BOX
+  id: "grip2_b4/color"
+  parent: "grip2_b4"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "grip2_b4/box"
+  parent: "grip2_b4"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 510.0
+    y: -262.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_spin"
+  id: "t_spin"
+  parent: "t_sword"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -56.0
+  }
+  type: TYPE_BOX
+  texture: "gui/rotate_default"
+  id: "spin1"
+  parent: "t_spin"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 266.0
+    y: -182.0
+  }
+  size {
+    x: 664.0
+    y: 402.0
+  }
+  type: TYPE_BOX
+  texture: "gui/boundry"
+  id: "outline1"
+  parent: "t_sword"
+  inherit_alpha: true
+  slice9 {
+    x: 14.0
+    y: 14.0
+    z: 14.0
+    w: 14.0
+  }
+}
+nodes {
+  position {
+    x: 82.0
+    y: 405.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_shield"
+  id: "t_shield"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -51.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_wood"
+  id: "t_wood"
+  parent: "t_shield"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 103.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "wood_b1"
+  parent: "t_wood"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/wood1"
+  id: "wood_b1/color"
+  parent: "wood_b1"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/button_selected"
+  id: "wood_b1/box"
+  parent: "wood_b1"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 199.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "wood_b2"
+  parent: "t_wood"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/wood2"
+  id: "wood_b2/color"
+  parent: "wood_b2"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "wood_b2/box"
+  parent: "wood_b2"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 290.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "wood_b3"
+  parent: "t_wood"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/wood3"
+  id: "wood_b3/color"
+  parent: "wood_b3"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "wood_b3/box"
+  parent: "wood_b3"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 381.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "wood_b4"
+  parent: "t_wood"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/wood4"
+  id: "wood_b4/color"
+  parent: "wood_b4"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "wood_b4/box"
+  parent: "wood_b4"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 8.0
+    y: -145.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_metal1"
+  id: "t_metal"
+  parent: "t_shield"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 95.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "metal1_b1"
+  parent: "t_metal"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.702
+    y: 0.702
+    z: 0.702
+  }
+  type: TYPE_BOX
+  id: "metal1_b1/color"
+  parent: "metal1_b1"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/button_selected"
+  id: "metal1_b1/box"
+  parent: "metal1_b1"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 191.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "metal1_b2"
+  parent: "t_metal"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.302
+    y: 0.302
+    z: 0.302
+  }
+  type: TYPE_BOX
+  id: "metal1_b2/color"
+  parent: "metal1_b2"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "metal1_b2/box"
+  parent: "metal1_b2"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 282.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "metal1_b3"
+  parent: "t_metal"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.937
+    y: 0.749
+    z: 0.016
+  }
+  type: TYPE_BOX
+  id: "metal1_b3/color"
+  parent: "metal1_b3"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "metal1_b3/box"
+  parent: "metal1_b3"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 373.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "metal1_b4"
+  parent: "t_metal"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.684
+    y: 0.087
+    z: 0.087
+  }
+  type: TYPE_BOX
+  id: "metal1_b4/color"
+  parent: "metal1_b4"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "metal1_b4/box"
+  parent: "metal1_b4"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 9.0
+    y: -239.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_metal2"
+  id: "t_metal2"
+  parent: "t_shield"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 94.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "metal2_b1"
+  parent: "t_metal2"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.471
+    y: 0.486
+    z: 0.51
+  }
+  type: TYPE_BOX
+  id: "metal2_b1/color"
+  parent: "metal2_b1"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/button_selected"
+  id: "metal2_b1/box"
+  parent: "metal2_b1"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 189.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "metal2_b2"
+  parent: "t_metal2"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.302
+    y: 0.302
+    z: 0.302
+  }
+  type: TYPE_BOX
+  id: "metal2_b2/color"
+  parent: "metal2_b2"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "metal2_b2/box"
+  parent: "metal2_b2"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 281.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "metal2_b3"
+  parent: "t_metal2"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.937
+    y: 0.749
+    z: 0.016
+  }
+  type: TYPE_BOX
+  id: "metal2_b3/color"
+  parent: "metal2_b3"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "metal2_b3/box"
+  parent: "metal2_b3"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 372.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "metal2_b4"
+  parent: "t_metal2"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.684
+    y: 0.087
+    z: 0.087
+  }
+  type: TYPE_BOX
+  id: "metal2_b4/color"
+  parent: "metal2_b4"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "metal2_b4/box"
+  parent: "metal2_b4"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 12.0
+    y: -333.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_padding"
+  id: "t_padding"
+  parent: "t_shield"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 90.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "padding_b1"
+  parent: "t_padding"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.675
+    y: 0.392
+    z: 0.412
+  }
+  type: TYPE_BOX
+  id: "padding_b1/color"
+  parent: "padding_b1"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/button_selected"
+  id: "padding_b1/box"
+  parent: "padding_b1"
+  overridden_fields: 9
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 187.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "padding_b2"
+  parent: "t_padding"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.2
+    y: 0.4
+    z: 0.4
+  }
+  type: TYPE_BOX
+  id: "padding_b2/color"
+  parent: "padding_b2"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "padding_b2/box"
+  parent: "padding_b2"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 278.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "padding_b3"
+  parent: "t_padding"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.362
+    y: 0.719
+    z: 0.951
+  }
+  type: TYPE_BOX
+  id: "padding_b3/color"
+  parent: "padding_b3"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "padding_b3/box"
+  parent: "padding_b3"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 369.0
+    y: -9.0
+  }
+  type: TYPE_TEMPLATE
+  id: "padding_b4"
+  parent: "t_padding"
+  inherit_alpha: true
+  template: "/assets/gui/color.gui"
+}
+nodes {
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+  }
+  type: TYPE_BOX
+  id: "padding_b4/color"
+  parent: "padding_b4"
+  overridden_fields: 5
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "padding_b4/box"
+  parent: "padding_b4"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 510.0
+    y: -267.0
+  }
+  type: TYPE_BOX
+  texture: "gui/text_spin"
+  id: "t_spin2"
+  parent: "t_shield"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -56.0
+  }
+  type: TYPE_BOX
+  texture: "gui/rotate_default"
+  id: "spin2"
+  parent: "t_spin2"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 267.0
+    y: -182.0
+  }
+  size {
+    x: 664.0
+    y: 417.0
+  }
+  type: TYPE_BOX
+  texture: "gui/boundry"
+  id: "outline2"
+  parent: "t_shield"
+  inherit_alpha: true
+  slice9 {
+    x: 16.0
+    y: 16.0
+    z: 16.0
+    w: 16.0
+  }
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

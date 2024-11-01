@@ -1,0 +1,229 @@
+local buttons = {} local colors = {} local scale_max = 1.07 local pop_duration = 0.25
+local button_off = "button_default" local button_on = "button_selected"
+local rotate_off = "rotate_default" local rotate_on = "rotate_selected"
+local manager = "/logic#logic" local sword_go = "/sword" local shield_go = "/shield"
+local sword_mesh = "/sword#sword" local shield_mesh = "/shield#shield"
+
+
+local function choose_color(self, selected, node, spin, mesh, map1, map2, color1, color2)
+
+	if not spin then
+
+		if map1 then
+			msg.post(manager, "color_mesh", {mesh = mesh, map1 = map1, map2 = map2, color1 = color1, color2 = color2})
+		else
+			msg.post(manager, "special", { mesh = mesh, color1 = color1, color2 = color2 })
+		end
+		gui.animate(node, "scale", scale_max, gui.EASING_OUTSINE, pop_duration, 0, nil, gui.PLAYBACK_ONCE_PINGPONG)
+		gui.play_flipbook(selected, button_off)
+		gui.play_flipbook(node, button_on)
+
+		return node
+	else
+
+		if node == buttons[34] then
+			if not self.is_spinning1 then
+				gui.animate(node, "scale", scale_max, gui.EASING_OUTSINE, pop_duration, 0, nil, gui.PLAYBACK_ONCE_PINGPONG)
+				gui.play_flipbook(node, rotate_on)
+				self.is_spinning1 = true
+			else
+				gui.animate(node, "scale", scale_max, gui.EASING_OUTSINE, pop_duration, 0, nil, gui.PLAYBACK_ONCE_PINGPONG)
+				gui.play_flipbook(node, rotate_off)
+				self.is_spinning1 = false
+			end
+			msg.post(manager, "spin_mesh", { mesh = sword_go, io = self.is_spinning1 })
+		else
+			if not self.is_spinning2 then
+				gui.animate(node, "scale", scale_max, gui.EASING_OUTSINE, pop_duration, 0, nil, gui.PLAYBACK_ONCE_PINGPONG)
+				gui.play_flipbook(node, rotate_on)
+				self.is_spinning2 = true
+			else
+				gui.animate(node, "scale", scale_max, gui.EASING_OUTSINE, pop_duration, 0, nil, gui.PLAYBACK_ONCE_PINGPONG)
+				gui.play_flipbook(node, rotate_off)
+				self.is_spinning2 = false
+			end
+			msg.post(manager, "spin_mesh", { mesh = shield_go, io = self.is_spinning2 })
+		end
+
+	end
+
+end
+
+
+function init(self)
+
+	msg.post(".", "acquire_input_focus")
+	---	SWORD UI NODES
+	local button_blade_1 = gui.get_node("blade_b1/box")  local button_blade_2 = gui.get_node("blade_b2/box")
+	local button_blade_3 = gui.get_node("blade_b3/box")  local button_blade_4 = gui.get_node("blade_b4/box")
+	local button_special = gui.get_node("blade_b5/box") 
+	local button_guard_1 = gui.get_node("guard_b1/box")  local button_guard_2 = gui.get_node("guard_b2/box")
+	local button_guard_3 = gui.get_node("guard_b3/box")  local button_guard_4 = gui.get_node("guard_b4/box")
+	local button_grip1_1 = gui.get_node("grip1_b1/box")  local button_grip1_2 = gui.get_node("grip1_b2/box")
+	local button_grip1_3 = gui.get_node("grip1_b3/box")  local button_grip1_4 = gui.get_node("grip1_b4/box")
+	local button_grip2_1 = gui.get_node("grip2_b1/box")  local button_grip2_2 = gui.get_node("grip2_b2/box")
+	local button_grip2_3 = gui.get_node("grip2_b3/box")  local button_grip2_4 = gui.get_node("grip2_b4/box")
+
+	---	SHIELD UI NODES
+	local button_wood_1 = gui.get_node("wood_b1/box")		local button_wood_2 = gui.get_node("wood_b2/box")
+	local button_wood_3 = gui.get_node("wood_b3/box")		local button_wood_4 = gui.get_node("wood_b4/box")
+	local button_metal1_1 = gui.get_node("metal1_b1/box")	local button_metal1_2 = gui.get_node("metal1_b2/box")
+	local button_metal1_3 = gui.get_node("metal1_b3/box")	local button_metal1_4 = gui.get_node("metal1_b4/box")
+	local button_metal2_1 = gui.get_node("metal2_b1/box")	local button_metal2_2 = gui.get_node("metal2_b2/box")
+	local button_metal2_3 = gui.get_node("metal2_b3/box")	local button_metal2_4 = gui.get_node("metal2_b4/box")
+	local button_padding_1 = gui.get_node("padding_b1/box") local button_padding_2 = gui.get_node("padding_b2/box")
+	local button_padding_3 = gui.get_node("padding_b3/box") local button_padding_4 = gui.get_node("padding_b4/box")
+
+	local button_spin1 = gui.get_node("spin1")		local button_spin2 = gui.get_node("spin2")
+	
+	buttons = { -- button nodes
+		button_blade_1, button_blade_2, button_blade_3, button_blade_4, button_special,
+		button_guard_1, button_guard_2, button_guard_3, button_guard_4,
+		button_grip1_1, button_grip1_2, button_grip1_3, button_grip1_4,
+		button_grip2_1, button_grip2_2, button_grip2_3, button_grip2_4,
+
+		button_wood_1, button_wood_2, button_wood_3, button_wood_4,
+		button_metal1_1, button_metal1_2, button_metal1_3, button_metal1_4,
+		button_metal2_1, button_metal2_2, button_metal2_3, button_metal2_4,
+		button_padding_1, button_padding_2, button_padding_3, button_padding_4,
+
+		button_spin1, button_spin2
+	}
+
+	colors = { -- mesh map index and colors used when gui nodes get input
+		----------  SWORD - Blade
+		{map = 4, map2 = 5, color = vmath.vector4(0.54901963472366, 0.57254904508591, 0.61176472902298, 1), color2 = vmath.vector4(0.898039, 0.898039, 0.898039, 1)},
+		{map = 4, map2 = 5, color = vmath.vector4(0.90200001001358, 0.70200002193451, 0.30199998617172, 1), color2 = vmath.vector4(1, 0.9, 0.5, 1)},
+		{map = 4, map2 = 5, color = vmath.vector4(0.30199998617172, 0.40000000596046, 0.80000001192093, 1), color2 = vmath.vector4(0.5, 0.6, 1, 1)},
+		{map = 4, map2 = 5, color = vmath.vector4(0.30199998617172, 0.50199997425079, 0.30199998617172, 1), color2 = vmath.vector4(0.5, 0.7, 0.5, 1)},
+		{map = nil, map2 = nil, color = vmath.vector4(0.533, 0.094, 0.047, 1.0), color2 = vmath.vector4(0.322, 0, 0.678, 1.0)}, --< special
+		---------- Guard
+		{map = 2, map2 = nil, color = vmath.vector4(1, 0.77647060155869, 0.31764706969261, 1), color2 = nil},
+		{map = 2, map2 = nil, color = vmath.vector4(0.90200001001358, 0.30199998617172, 0.30199998617172, 1), color2 = nil},
+		{map = 2, map2 = nil, color = vmath.vector4(0.20000000298023, 0.20000000298023, 0.20000000298023, 1), color2 = nil},
+		{map = 2, map2 = nil, color = vmath.vector4(0.50199997425079, 0.60000002384186, 1, 1), color2 = nil},
+		---------- Grip 1
+		{map = 1, map2 = nil, color = vmath.vector4(0.60000002384186, 0.35686275362968, 0.37254902720451, 1), color2 = nil},
+		{map = 1, map2 = nil, color = vmath.vector4(0.30199998617172, 0.10199999809265, 0.30199998617172, 1), color2 = nil},
+		{map = 1, map2 = nil, color = vmath.vector4(0.30199998617172, 0.20000000298023, 0.60000002384186, 1), color2 = nil},
+		{map = 1, map2 = nil, color = vmath.vector4(0.32800000905991, 0.21299999952316, 0.076999999582767, 1), color2 = nil},
+		---------- Grip 2
+		{map = 3, map2 = nil, color = vmath.vector4(0.4705882370472, 0.48627451062202, 0.50980395078659, 1), color2 = nil},
+		{map = 3, map2 = nil, color = vmath.vector4(0.50199997425079, 0.40000000596046, 0.80000001192093, 1), color2 = nil},
+		{map = 3, map2 = nil, color = vmath.vector4(1, 0.70200002193451, 0.40000000596046, 1), color2 = nil},
+		{map = 3, map2 = nil, color = vmath.vector4(0.60000002384186, 0.70200002193451, 1, 1), color2 = nil},
+		----------  SHIELD - Wood
+		{map = 2, map2 = 3, color = vmath.vector4(0.74117648601532, 0.55686277151108, 0.40784314274788, 1), color2 = vmath.vector4(0.63137257099152, 0.4745098054409, 0.34901961684227, 1)},
+		{map = 2, map2 = 3, color = vmath.vector4(0.106, 0.431, 0.412, 1), color2 = vmath.vector4(0.18, 0.788, 0.192, 1)},
+		{map = 2, map2 = 3, color = vmath.vector4(0.859, 0.804, 0.067, 1), color2 = vmath.vector4(0.384, 0.655, 0.859, 1)},
+		{map = 2, map2 = 3, color = vmath.vector4(0.647, 0.086, 0.161, 1), color2 = vmath.vector4(0.137, 0.012, 0.027, 1)},
+		---------- Metal 1
+		{map = 1, map2 = nil, color = vmath.vector4(0.70196080207825, 0.70196080207825, 0.70196080207825, 1), color2 = nil},
+		{map = 1, map2 = nil, color = vmath.vector4(0.30199998617172, 0.30199998617172, 0.30199998617172, 1), color2 = nil},
+		{map = 1, map2 = nil, color = vmath.vector4(0.93699997663498, 0.7490000128746, 0.016000000759959, 1), color2 = nil},
+		{map = 1, map2 = nil, color = vmath.vector4(0.68400001525879, 0.086999997496605, 0.086999997496605, 1), color2 = nil},
+		----------  Metal 2
+		{map = 5, map2 = nil, color = vmath.vector4(0.4705882370472, 0.48627451062202, 0.50980395078659, 1), color2 = nil},
+		{map = 5, map2 = nil, color = vmath.vector4(0.30199998617172, 0.30199998617172, 0.30199998617172, 1), color2 = nil},
+		{map = 5, map2 = nil, color = vmath.vector4(0.93699997663498, 0.7490000128746, 0.016000000759959, 1), color2 = nil},
+		{map = 5, map2 = nil, color = vmath.vector4(0.68400001525879, 0.086999997496605, 0.086999997496605, 1), color2 = nil},
+		---------- Padding
+		{map = 4, map2 = nil, color = vmath.vector4(0.6745098233223, 0.39215686917305, 0.41176471114159, 1), color2 = nil},
+		{map = 4, map2 = nil, color = vmath.vector4(0.20000000298023, 0.40000000596046, 0.40000000596046, 1), color2 = nil},
+		{map = 4, map2 = nil, color = vmath.vector4(0.36199998855591, 0.71899998188019, 0.95099997520447, 1), color2 = nil},
+		{map = 4, map2 = nil, color = vmath.vector4(0.20000000298023, 0.20000000298023, 0.20000000298023, 1), color2 = nil}
+	}
+
+	self.selected_blade   = buttons[1]
+	self.selected_guard   = buttons[6]
+	self.selected_grip1   = buttons[10]
+	self.selected_grip2   = buttons[14]
+	self.selected_wood    = buttons[18]
+	self.selected_metal1  = buttons[22]
+	self.selected_metal2  = buttons[26]
+	self.selected_padding = buttons[30]
+
+	self.is_spinning1 = false
+	self.is_spinning2 = false 
+
+end
+
+
+function on_input(self, action_id, action)
+	if action_id == hash("touch") and action.pressed then
+
+		if gui.pick_node(buttons[1], action.x, action.y) and self.selected_blade ~= buttons[1] then
+			self.selected_blade = choose_color(self, self.selected_blade, buttons[1], false, sword_mesh, colors[1].map,colors[1].map2,colors[1].color,colors[1].color2)
+		elseif gui.pick_node(buttons[2], action.x, action.y) and self.selected_blade ~= buttons[2] then
+			self.selected_blade = choose_color(self, self.selected_blade, buttons[2], false, sword_mesh, colors[2].map,colors[2].map2,colors[2].color,colors[2].color2)
+		elseif gui.pick_node(buttons[3], action.x, action.y) and self.selected_blade ~= buttons[3] then
+			self.selected_blade = choose_color(self, self.selected_blade, buttons[3], false, sword_mesh, colors[3].map,colors[3].map2,colors[3].color,colors[3].color2)
+		elseif gui.pick_node(buttons[4], action.x, action.y) and self.selected_blade ~= buttons[4] then
+			self.selected_blade = choose_color(self, self.selected_blade, buttons[4], false, sword_mesh, colors[4].map,colors[4].map2,colors[4].color,colors[4].color2)
+		elseif gui.pick_node(buttons[5], action.x, action.y) and self.selected_blade ~= buttons[5] then
+			self.selected_blade = choose_color(self, self.selected_blade, buttons[5], false, sword_mesh, colors[5].map,colors[5].map2,colors[5].color,colors[5].color2)
+		elseif gui.pick_node(buttons[6], action.x, action.y) and self.selected_guard ~= buttons[6] then
+			self.selected_guard = choose_color(self, self.selected_guard, buttons[6], false, sword_mesh, colors[6].map, nil, colors[6].color)
+		elseif gui.pick_node(buttons[7], action.x, action.y) and self.selected_guard ~= buttons[7] then
+			self.selected_guard = choose_color(self, self.selected_guard, buttons[7], false, sword_mesh, colors[7].map, nil, colors[7].color)
+		elseif gui.pick_node(buttons[8], action.x, action.y) and self.selected_guard ~= buttons[8] then
+			self.selected_guard = choose_color(self, self.selected_guard, buttons[8], false, sword_mesh, colors[8].map, nil, colors[8].color)
+		elseif gui.pick_node(buttons[9], action.x, action.y) and self.selected_guard ~= buttons[9] then
+			self.selected_guard = choose_color(self, self.selected_guard, buttons[9], false, sword_mesh, colors[9].map, nil, colors[9].color)
+		elseif gui.pick_node(buttons[10], action.x, action.y) and self.selected_grip1 ~= buttons[10] then
+			self.selected_grip1 = choose_color(self, self.selected_grip1, buttons[10], false, sword_mesh, colors[10].map, nil, colors[10].color)
+		elseif gui.pick_node(buttons[11], action.x, action.y) and self.selected_grip1 ~= buttons[11] then
+			self.selected_grip1 = choose_color(self, self.selected_grip1, buttons[11], false, sword_mesh, colors[11].map, nil, colors[11].color)
+		elseif gui.pick_node(buttons[12], action.x, action.y) and self.selected_grip1 ~= buttons[12] then
+			self.selected_grip1 = choose_color(self, self.selected_grip1, buttons[12], false, sword_mesh, colors[12].map, nil, colors[12].color)
+		elseif gui.pick_node(buttons[13], action.x, action.y) and self.selected_grip1 ~= buttons[13] then
+			self.selected_grip1 = choose_color(self, self.selected_grip1, buttons[13], false, sword_mesh, colors[13].map, nil, colors[13].color)
+		elseif gui.pick_node(buttons[14], action.x, action.y) and self.selected_grip2 ~= buttons[14] then
+			self.selected_grip2 = choose_color(self, self.selected_grip2, buttons[14], false, sword_mesh, colors[14].map, nil, colors[14].color)
+		elseif gui.pick_node(buttons[15], action.x, action.y) and self.selected_grip2 ~= buttons[15] then
+			self.selected_grip2 = choose_color(self, self.selected_grip2, buttons[15], false, sword_mesh, colors[15].map, nil, colors[15].color)
+		elseif gui.pick_node(buttons[16], action.x, action.y) and self.selected_grip2 ~= buttons[16] then
+			self.selected_grip2 = choose_color(self, self.selected_grip2, buttons[16], false, sword_mesh, colors[16].map, nil, colors[16].color)
+		elseif gui.pick_node(buttons[17], action.x, action.y) and self.selected_grip2 ~= buttons[17] then
+			self.selected_grip2 = choose_color(self, self.selected_grip2, buttons[17], false, sword_mesh, colors[17].map, nil, colors[17].color)
+		elseif gui.pick_node(buttons[18], action.x, action.y) and self.selected_wood ~= buttons[18] then
+			self.selected_wood = choose_color(self, self.selected_wood, buttons[18], false, shield_mesh, colors[18].map,colors[18].map2,colors[18].color,colors[18].color2)
+		elseif gui.pick_node(buttons[19], action.x, action.y) and self.selected_wood ~= buttons[19] then
+			self.selected_wood = choose_color(self, self.selected_wood, buttons[19], false, shield_mesh, colors[19].map,colors[19].map2,colors[19].color,colors[19].color2)
+		elseif gui.pick_node(buttons[20], action.x, action.y) and self.selected_wood ~= buttons[20] then
+			self.selected_wood = choose_color(self, self.selected_wood, buttons[20], false, shield_mesh, colors[20].map,colors[20].map2,colors[20].color,colors[20].color2)
+		elseif gui.pick_node(buttons[21], action.x, action.y) and self.selected_wood ~= buttons[21] then
+			self.selected_wood = choose_color(self, self.selected_wood, buttons[21], false, shield_mesh, colors[21].map,colors[21].map2,colors[21].color,colors[21].color2)
+		elseif gui.pick_node(buttons[22], action.x, action.y) and self.selected_metal1 ~= buttons[22] then
+			self.selected_metal1 = choose_color(self, self.selected_metal1, buttons[22], false, shield_mesh, colors[22].map, nil, colors[22].color)
+		elseif gui.pick_node(buttons[23], action.x, action.y) and self.selected_metal1 ~= buttons[23] then
+			self.selected_metal1 = choose_color(self, self.selected_metal1, buttons[23], false, shield_mesh, colors[23].map, nil, colors[23].color)
+		elseif gui.pick_node(buttons[24], action.x, action.y) and self.selected_metal1 ~= buttons[24] then
+			self.selected_metal1 = choose_color(self, self.selected_metal1, buttons[24], false, shield_mesh, colors[24].map, nil, colors[24].color)
+		elseif gui.pick_node(buttons[25], action.x, action.y) and self.selected_metal1 ~= buttons[25] then
+			self.selected_metal1 = choose_color(self, self.selected_metal1, buttons[25], false, shield_mesh, colors[25].map, nil, colors[25].color)
+		elseif gui.pick_node(buttons[26], action.x, action.y) and self.selected_metal2 ~= buttons[26] then
+			self.selected_metal2 = choose_color(self, self.selected_metal2, buttons[26], false, shield_mesh, colors[26].map, nil, colors[26].color)
+		elseif gui.pick_node(buttons[27], action.x, action.y) and self.selected_metal2 ~= buttons[27] then
+			self.selected_metal2 = choose_color(self, self.selected_metal2, buttons[27], false, shield_mesh, colors[27].map, nil, colors[27].color)
+		elseif gui.pick_node(buttons[28], action.x, action.y) and self.selected_metal2 ~= buttons[28] then
+			self.selected_metal2 = choose_color(self, self.selected_metal2, buttons[28], false, shield_mesh, colors[28].map, nil, colors[28].color)
+		elseif gui.pick_node(buttons[29], action.x, action.y) and self.selected_metal2 ~= buttons[29] then
+			self.selected_metal2 = choose_color(self, self.selected_metal2, buttons[29], false, shield_mesh, colors[29].map, nil, colors[29].color)
+		elseif gui.pick_node(buttons[30], action.x, action.y) and self.selected_padding ~= buttons[30] then
+			self.selected_padding = choose_color(self, self.selected_padding, buttons[30], false, shield_mesh, colors[30].map, nil, colors[30].color)
+		elseif gui.pick_node(buttons[31], action.x, action.y) and self.selected_padding ~= buttons[31] then
+			self.selected_padding = choose_color(self, self.selected_padding, buttons[31], false, shield_mesh, colors[31].map, nil, colors[31].color)
+		elseif gui.pick_node(buttons[32], action.x, action.y) and self.selected_padding ~= buttons[32] then
+			self.selected_padding = choose_color(self, self.selected_padding, buttons[32], false, shield_mesh, colors[32].map, nil, colors[32].color)
+		elseif gui.pick_node(buttons[33], action.x, action.y) and self.selected_padding ~= buttons[33] then
+			self.selected_padding = choose_color(self, self.selected_padding, buttons[33], false, shield_mesh, colors[33].map, nil, colors[33].color)
+		elseif gui.pick_node(buttons[34], action.x, action.y) then
+			choose_color(self, nil, buttons[34], true)
+		elseif gui.pick_node(buttons[35], action.x, action.y) then
+			choose_color(self, nil, buttons[35], true)
+		end
+
+	end
+
+end
