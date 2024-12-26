@@ -40,9 +40,3 @@
 *.render_script linguist-language=Lua
 *.script linguist-language=Lua
 *.gui_script linguist-language=Lua
-
-# Temporary settings for line endings to lf because new render pipeline will give errors, lf also corrupts images in rep
-* text=auto
-* text eol=lf
-*.png binary
-
